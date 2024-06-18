@@ -116,7 +116,7 @@ function setFormForUpdate(indexUpdated){
     ProductDescInput.value = productList[indexUpdated].desc;
     ProductCategoryInput.value = productList[indexUpdated].category;
 
-// save the Index of the product to be updated as an attribute in update button
+// save the Index of the product to be updated as an attribute in update button OR use a global variable
     updateBtn.setAttribute('productIndex',indexUpdated);
 
     addProductBtn.classList.add('d-none');
@@ -127,11 +127,21 @@ function updateImplementation(){
     // addProduct();
     var indexUpdated = Number(updateBtn.getAttribute('productIndex'));
     
-    productList[indexUpdated].name = productNameInput.value;
-    productList[indexUpdated].price = productPriceInput.value;
-    productList[indexUpdated].desc = ProductDescInput.value;
-    productList[indexUpdated].category = ProductCategoryInput.value;
-    productList[indexUpdated].img = '../images/' + ProductImgInput.value.substring(12);
+    // productList[indexUpdated].name = productNameInput.value;
+    // productList[indexUpdated].price = productPriceInput.value;
+    // productList[indexUpdated].desc = ProductDescInput.value;
+    // productList[indexUpdated].category = ProductCategoryInput.value;
+    // productList[indexUpdated].img = '../images/' + ProductImgInput.value.substring(12);
+
+    var newProduct = {
+        name: productNameInput.value,
+        price: productPriceInput.value,
+        category: ProductCategoryInput.value,
+        desc: ProductDescInput.value,
+        img: 'images/' + ProductImgInput.files[0]?.name,
+    };
+
+    productList.splice(indexUpdated,1,newProduct);
 
     clearData();
     localStorage.setItem('productList',JSON.stringify(productList));
