@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Management System</title>
+    <link rel="shortcut icon" href="../images/storage_favicon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Store Management System</h1>
+
+        <div class="alert alert-danger d-none text-center" id="invalidFromAlert">Invalid Form</div>
+
+        <div class="form-floating mb-3">
+            <input type="text" oninput="validateProductName(this)" class="form-control border-0 border-bottom" id="productName" placeholder="product Name">
+            <div class="alert alert-danger d-none">The Product Name must starts with a capital Letter then from 3 to 5 alphanumeric letters then a space or not then from 0 to 10 alphanumeric letters</div>
+            <label for="productName">product Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" oninput="validateProductName(this)" class="form-control border-0 border-bottom" id="productPrice" placeholder="Product Price">
+            <div class="alert alert-danger d-none">The product price must be in range from 1000 to 100000</div>
+            <label for="productPrice">Product Price</label>
+        </div>
+    
+        <div class="form-floating mb-3">
+            <input list="categories" oninput="validateProductName(this)" type="text" class="form-control border-0 border-bottom" id="productCategory" placeholder="Product Category">
+            <div class="alert alert-danger d-none">Can't select out of the list</div>
+            <label for="productCategory">Product Category</label>
+            <datalist id="categories">
+                <option value="Tv"/>
+                <option value="Electronics"/>
+                <option value="Mobiles"/>
+                <option value="Tablets"/>
+                <option value="Pc"/>
+                <option value="Laptop">Laptop</option>
+            </datalist>
+        </div>
+
+        <div class="form-floating mb-3">
+            <textarea oninput="validateProductName(this)" class="form-control border-0 border-bottom" id="productDescription" placeholder="Product Description"></textarea>
+            <div class="alert alert-danger d-none">Write at least 4 characters and at most 300 characters</div>
+            <label for="productDescription">Product Description</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="file" class="form-control border-0 border-bottom" id="ProductImg" placeholder="Product Image"/>
+            <label for="ProductImg">Product Image</label>
+        </div>
+        
+        <div class="form-floating my-3">
+            <input type="search" id="ProductSearchInput" oninput="searchProduct();" class="form-control" placeholder="Search Product" name="searchProduct">
+            <label for="ProductSearchInput">Search Product</label>
+        </div>
+
+        <button class="btn btn-outline-info" id="addProductBtn" onclick="addProduct();">Add Product</button>
+        <button class="btn btn-outline-warning d-none" id="updateBtn" onclick="updateImplementation();">update</button>
+    </div>
+
+    <div class="container my-4">
+        <div id="placeHere" class="row"></div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
